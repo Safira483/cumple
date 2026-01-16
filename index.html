@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>jake.com</title>
+<title>Jake Pixelado 🎉</title>
 <style>
     body {
         background: #ffe6f2;
@@ -12,7 +12,7 @@
         overflow-x: hidden;
     }
     #card {
-        background: #ffffff;
+        background: #fff;
         border-radius: 10px;
         width: 80%;
         max-width: 600px;
@@ -20,7 +20,6 @@
         padding: 30px;
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
         position: relative;
-        z-index: 1;
     }
     #btn {
         padding: 10px 20px;
@@ -31,91 +30,71 @@
         color: white;
         cursor: pointer;
         margin-top: 20px;
-        z-index: 10;
         position: relative;
+        z-index: 10;
     }
     #btn:hover {
         background: #ff1493;
     }
-    #message {
-        font-size: 22px;
-        margin-top: 20px;
-        color: #333;
-        white-space: pre-line;
-        display: none;
-    }
-
     #jake {
         margin: 20px auto;
         white-space: pre;
-        font-size: 16px;
-        line-height: 16px;
+        font-size: 14px;
+        line-height: 14px;
         color: transparent; /* empieza invisible */
-        transition: font-size 0.3s, color 0.3s;
-        max-height: 60vh; /* Limita la altura de Jake */
-        overflow-y: auto;
+        transition: color 0.5s, transform 0.5s;
+        display: inline-block;
     }
-
-    .y {color: #FFD700;}
-    .b {color: #000;}
-    .w {color: #fff;}
+    #message {
+        font-size: 20px;
+        color: #333;
+        margin-top: 20px;
+        display: none;
+    }
+    /* Colores */
+    .y {color: #FFD700;} /* dorado */
+    .b {color: #000;}    /* negro */
+    .r {color: #FF0000;} /* rojo */
+    .p {color: #FF69B4;} /* rosa */
 </style>
 </head>
 <body>
 
 <div id="card">
     <button id="btn">¡Haz Click Aquí!</button>
-    <pre id="jake"></pre>
+    <pre id="jake">
+<span class="y">  ██  </span>
+<span class="y"> ████ </span>
+<span class="y">██████</span>
+<span class="b">  ██  </span>
+<span class="y"> ████ </span>
+<span class="y">  ██  </span>
+    </pre>
     <div id="message"></div>
 </div>
 
 <script>
 const btn = document.getElementById("btn");
-const message = document.getElementById("message");
 const jake = document.getElementById("jake");
-
-// Jake pixel por pixel (ejemplo simple más grande)
-const jakePixels = [
-`<span class="y">██████</span>`,
-`<span class="y">██████</span>`,
-`<span class="y">██<span class="b">██</span>██</span>`,
-`<span class="y">██████</span>`,
-`<span class="y">██████</span>`,
-`<span class="b">████</span>`,
-`<span class="y">████</span>`
-];
-
-let currentPixel = 0;
-let size = 16;
-const maxSize = 150; // Tamaño máximo de Jake
+const message = document.getElementById("message");
 
 btn.addEventListener("click", () => {
-    // Añade un pixel con efecto fade
-    if(currentPixel < jakePixels.length){
-        const row = document.createElement("div");
-        row.innerHTML = jakePixels[currentPixel];
-        row.style.opacity = 0;
-        jake.appendChild(row);
-        setTimeout(() => { row.style.opacity = 1; row.style.transition = "opacity 0.3s"; }, 50);
-        currentPixel++;
-    }
-
-    // Aumenta tamaño de Jake suavemente
-    size += 8;
-    if(size > maxSize) size = maxSize; // Limita el tamaño máximo
-    jake.style.fontSize = size + "px";
-    jake.style.color = "#FFD700"; // ahora visible
-
-    // Cuando Jake alcanza tamaño máximo, mostrar mensaje y ocultar botón
-    if(size >= maxSize && currentPixel >= jakePixels.length){
+    // Hacer visible Jake y aplicar efecto de "crecimiento"
+    jake.style.color = "inherit";
+    jake.style.transform = "scale(1.3)";
+    
+    // Esperar 1.5 segundos y mostrar mensaje
+    setTimeout(() => {
         message.style.display = "block";
-        message.innerHTML = "😎 jsjsj lo diste todo<br><br>" +
-                            "🎉 <strong>¡Feliz cumple, Elviss o mejor dicho Brunito jsjs!</strong> 🎂<br>" +
-                            "Que tengas un día increíble, lleno de risas y buena vibra.<br>" +
-                            "Pásala de ptmr, disfruta cada momento de tu día.<br>" +
+        message.innerHTML = "jsjsj lo diste todo<br><br>" +
+                            "<strong>¡Feliz cumple, Elviss o mejor dicho Brunito jsjs!</strong> 🎂<br>" +
+                            "Que tengas un día increíble, baila todo lo q puedass.<br>" +
+                            "Pásala de ptmr, woaa ya 19 q abusom 
+                            "disfruta cada momento de tu díaa.<br>" +
                             "Nos vemos prontito :D"; 
+                            "c t quiere"; 
         btn.style.display = "none";
-    }
+    }, 1500);
 });
 </script>
 
