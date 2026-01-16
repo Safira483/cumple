@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Tarjeta de Cumpleaños 🎉</title>
+<title>jake.com</title>
 <style>
     body {
         background: #ffe6f2;
@@ -59,8 +59,6 @@
 <body>
 
 <div id="card">
-    <h1>🎉 ¡Feliz Cumpleaños! 🎂</h1>
-    <p>Haz clic para ver tu sorpresa 👇</p>
     <button id="btn">¡Haz Click Aquí!</button>
     <pre id="jake"></pre>
     <div id="message"></div>
@@ -71,10 +69,11 @@ const btn = document.getElementById("btn");
 const message = document.getElementById("message");
 const jake = document.getElementById("jake");
 
-// Jake pixel por pixel
+// Jake pixel por pixel (ejemplo más grande)
 const jakePixels = [
-`<span class="y">██</span><span class="b">██</span><span class="y">██</span>`,
 `<span class="y">██████</span>`,
+`<span class="y">██████</span>`,
+`<span class="y">██<span class="b">██</span>██</span>`,
 `<span class="y">██████</span>`,
 `<span class="y">██████</span>`,
 `<span class="b">████</span>`,
@@ -85,7 +84,7 @@ let currentPixel = 0;
 let size = 16;
 
 btn.addEventListener("click", () => {
-    // Añade un pixel con efecto “fade”
+    // Añade un pixel con efecto fade
     if(currentPixel < jakePixels.length){
         const row = document.createElement("div");
         row.innerHTML = jakePixels[currentPixel];
@@ -108,7 +107,6 @@ btn.addEventListener("click", () => {
                             "Que tengas un día increíble, lleno de risas y buena vibra.<br>" +
                             "Pásala de ptmr, disfruta cada momento de tu día.<br>" +
                             "Nos vemos prontito :D"; 
-                            "C t quiere";
         btn.style.display = "none";
     }
 });
@@ -116,3 +114,4 @@ btn.addEventListener("click", () => {
 
 </body>
 </html>
+✅ Qué cambia:
