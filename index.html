@@ -29,16 +29,19 @@
         color: white;
         cursor: pointer;
         margin-top: 20px;
+        position: relative;
+        z-index: 10;
     }
     #btn:hover {
         background: #ff1493;
     }
     #jake {
-        width: 200px;
         margin: 20px auto;
-        display: block;
-        opacity: 0;
-        transition: transform 0.5s, opacity 0.5s;
+        white-space: pre;
+        font-size: 14px;
+        line-height: 14px;
+        display: inline-block;
+        text-align: left;
     }
     #message {
         font-size: 20px;
@@ -46,14 +49,18 @@
         margin-top: 20px;
         display: none;
     }
+    /* Colores */
+    .y {color: #FFD700;} /* dorado */
+    .b {color: #000;}    /* negro */
 </style>
 </head>
 <body>
 
 <div id="card">
+    <h1>🎉 ¡Feliz Cumpleaños! 🎂</h1>
+    <p>Haz clic para ver tu sorpresa 👇</p>
     <button id="btn">¡Haz Click Aquí!</button>
-    <!-- Cambia la URL por la imagen de Jake que tengas -->
-    <img id="jake" src="https://i.imgur.com/4Xz6k6b.png" alt="Jake Pixelado">
+    <pre id="jake"></pre>
     <div id="message"></div>
 </div>
 
@@ -62,23 +69,46 @@ const btn = document.getElementById("btn");
 const jake = document.getElementById("jake");
 const message = document.getElementById("message");
 
-btn.addEventListener("click", () => {
-    // Aparece Jake con efecto de crecimiento
-    jake.style.opacity = 1;
-    jake.style.transform = "scale(1.3)";
+// Jake pixelado, fila por fila (cabeza, cuerpo, pies)
+const jakePixels = [
+`  <span class="y">██</span>  <span class="y">██</span>  `,  // cabeza
+`  <span class="y">████</span>  <span class="y">████</span>`,
+`  <span class="y">██████</span>`,
+`    <span class="b">██</span>  <span class="b">██</span>    `, // ojos
+`  <span class="y">████</span>  <span class="y">████</span>`,
+`    <span class="y">██</span>  <span class="y">██</span>`,
+`    <span class="y">██</span>  <span class="y">██</span>` // pies
+];
 
-    // Esperar 1.5 segundos y mostrar mensaje
-    setTimeout(() => {
-        message.style.display = "block";
-        message.innerHTML = "jsjsj lo diste todo<br><br>" +
-                            "<strong>¡Feliz cumple, Elviss o mejor dicho Brunito jsjs!</strong> 🎂<br>" +
-                            "Que tengas un día increíble, baila todo lo que puedas<br>" +
-                            "Pásala de ptmr, woaa ya 19 que abuso<br>" +
-                            "Disfruta cada momento de tu día<br>" +
-                            "Nos vemos prontito :D"; 
-                            " C t quiere"; 
-        btn.style.display = "none";
-    }, 1500);
+let currentRow = 0;
+
+btn.addEventListener("click", () => {
+    // Construir Jake fila por fila
+    const interval = setInterval(() => {
+        if(currentRow < jakePixels.length){
+            const row = document.createElement("div");
+            row.innerHTML = jakePixels[currentRow];
+            jake.appendChild(row);
+            currentRow++;
+        } else {
+            clearInterval(interval);
+
+            // Esperar 1.5s y mostrar mensaje final
+            setTimeout(() => {
+                message.style.display = "block";
+                message.innerHTML = " jsjsj lo diste todo<br><br>" +
+                                    "<strong>¡Feliz cumple, Elviss o mejor dicho Brunito jsjs!</strong> <br>" +
+                                    "Que tengas un día increíble, baila todo lo que puedas<br>" +
+                                    "Pásala de ptmr, woaa ya 19 que abuso<br>" +
+                                    "Disfruta cada momento de tu día<br>" +
+                                    "muak"<br>" +
+                                    "Nos vemos prontito :D";
+                                   
+                btn.style.display = "none";
+            }, 1500);
+        }
+    }, 300); // cada fila aparece cada 0.3s
+
 });
 </script>
 
