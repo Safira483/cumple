@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tarjeta de Cumpleaños 🎉</title>
+<style>
+    body {
+        background: #ffe6f2;
+        font-family: monospace;
+        text-align: center;
+        padding-top: 50px;
+        overflow: hidden;
+    }
+    #card {
+        background: #ffffff;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 1;
+    }
+    #btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        background: #ff69b4;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    #btn:hover {
+        background: #ff1493;
+    }
+    #message {
+        font-size: 22px;
+        margin-top: 20px;
+        color: #333;
+        white-space: pre-line;
+        display: none;
+    }
+
+    #jake {
+        margin: 20px auto;
+        white-space: pre;
+        font-size: 16px;
+        line-height: 16px;
+        color: transparent; /* empieza invisible */
+        transition: font-size 0.3s, color 0.3s;
+    }
+    .y {color: #FFD700;}
+    .b {color: #000;}
+    .w {color: #fff;}
+</style>
+</head>
+<body>
+
+<div id="card">
+    <h1>🎉 ¡Feliz Cumpleaños! 🎂</h1>
+    <p>Haz clic para ver tu sorpresa 👇</p>
+    <button id="btn">¡Haz Click Aquí!</button>
+    <pre id="jake"></pre>
+    <div id="message"></div>
+</div>
+
+<script>
+const btn = document.getElementById("btn");
+const message = document.getElementById("message");
+const jake = document.getElementById("jake");
+
+// Jake pixel por pixel
+const jakePixels = [
+`<span class="y">██</span><span class="b">██</span><span class="y">██</span>`,
+`<span class="y">██████</span>`,
+`<span class="y">██████</span>`,
+`<span class="y">██████</span>`,
+`<span class="b">████</span>`,
+`<span class="y">████</span>`
+];
+
+let currentPixel = 0;
+let size = 16;
+
+btn.addEventListener("click", () => {
+    // Añade un pixel con efecto “fade”
+    if(currentPixel < jakePixels.length){
+        const row = document.createElement("div");
+        row.innerHTML = jakePixels[currentPixel];
+        row.style.opacity = 0;
+        jake.appendChild(row);
+        setTimeout(() => { row.style.opacity = 1; row.style.transition = "opacity 0.3s"; }, 50);
+        currentPixel++;
+    }
+    
+    // Aumenta tamaño de Jake suavemente
+    size += 8;
+    jake.style.fontSize = size + "px";
+    jake.style.color = "#FFD700"; // ahora visible
+
+    // Cuando ocupa gran parte de la pantalla
+    if(size >= window.innerHeight / 1.5){
+        message.style.display = "block";
+        message.innerHTML = "😎 jsjsj lo diste todo<br><br>" +
+                            "🎉 <strong>¡Feliz cumple, Elviss o mejor dicho Brunito jsjs!</strong> 🎂<br>" +
+                            "Que tengas un día increíble, lleno de risas y buena vibra.<br>" +
+                            "Pásala de ptmr, disfruta cada momento de tu día.<br>" +
+                            "Nos vemos prontito :D"; 
+                            "C t quiere";
+        btn.style.display = "none";
+    }
+});
+</script>
+
+</body>
+</html>
